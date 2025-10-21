@@ -1,0 +1,6 @@
+*.xcbkptlist
+*.xcscheme
+*.xctestplan
+IDEFindNavigatorScopes.plist
+xcschememanagement.plist
+UserInterfaceState.xcuserstate
