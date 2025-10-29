@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-// MARK: - View
-
 /// A SwiftUI view that serves as the main interface for the chat feature.
 ///
 /// `ChatView` displays a scrollable list of messages and a floating input field for user interaction.

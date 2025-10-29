@@ -8,7 +8,20 @@ import Dependencies
 import Foundation
 import FoundationModels
 
-// MARK: - Protocol
+/// A representation of a chat conversation session, typically encompassing a sequence of user and system (or AI) messages.
+///
+/// `ChatSession` is designed to manage the lifecycle and content of chat-based interactions.
+/// It maintains an ordered collection of messages, participant information, and may manage session-specific state such as context, summary, or metadata.
+///
+/// Typical responsibilities and features:
+/// - Storing the conversation history, including user and assistant/system messages.
+/// - Managing unique session identifiers or timestamps for tracking and retrieval.
+/// - Supporting session-specific context or settings (e.g., system prompt, chat topic, or user preferences).
+/// - Providing methods to add, remove, or update messages within the session.
+/// - Facilitating persistence to disk or cloud, enabling session restoration across app launches.
+/// - Optionally handling summary, truncation, or message redaction for long conversations.
+///
+/// Use `ChatSession` to encapsulate all relevant information and operations for a single conversational experience.
 struct ChatClient: Sendable {
     var createSession: @Sendable (_ systemInstructions: String) async throws -> LanguageModelSession
     var streamResponse: @Sendable (_ session: LanguageModelSession,
@@ -21,32 +34,7 @@ struct ChatClient: Sendable {
     var availabilityDescription: @Sendable (_ availability: SystemLanguageModel.Availability) -> String
 }
 
-/// The default implementation of `ChatClientProtocol`, responsible for interacting with the system's language model.
-///
-/// `DefaultChatClient` manages the lifecycle and interaction with language model sessions,
-/// including session creation, streaming responses, synchronous completions, and model availability checks.
-///
-/// - Important: This class assumes the presence of the Apple Intelligence language model APIs and is designed
-///   to integrate with system-provided language models on supported Apple platforms.
-///
-/// ### Features
-/// - Creates new language model sessions with custom system instructions.
-/// - Provides both streaming and non-streaming response interfaces.
-/// - Checks model availability and supplies user-friendly descriptions for availability status.
-///
-/// ### Usage
-/// Typically accessed via the dependency system:
-/// ```swift
-/// let chatClient: ChatClientProtocol = DependencyValues().chatClient
-/// let session = try await chatClient.createSession("You are a helpful assistant.")
-/// let response = try await chatClient.respond(session, "Hello!", GenerationOptions())
-/// ```
-///
-/// ### See Also
-/// - `ChatClientProtocol`
-/// - `SystemLanguageModel`
-/// - `LanguageModelSession`
-
+// MARK: - Live Implementation
 extension ChatClient: DependencyKey {
     static let liveValue: ChatClient = {
         ChatClient(createSession: { systemInstructions in

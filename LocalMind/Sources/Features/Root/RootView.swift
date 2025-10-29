@@ -7,6 +7,15 @@
 import SwiftUI
 import ComposableArchitecture
 
+/// The main container view of the application.
+///
+/// `RootView` serves as the entry point for the user interface, orchestrating the display
+/// and layout of primary content. It is typically responsible for determining which parts
+/// of the app's UI hierarchy are visible, handling navigation, and providing any shared
+/// environment objects or dependencies to its child views.
+///
+/// - Note: Customize `RootView` to initialize the UI based on app state or initial configuration.
+/// - Important: Ensure `RootView` is referenced as the top-level view in your app's scene or window setup.
 struct RootView: View {
     @Dependency(\.deviceInfo) private var deviceInfo
     @Bindable var store: StoreOf<RootReducer>

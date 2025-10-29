@@ -53,14 +53,14 @@ LocalMind is built using **The Composable Architecture (TCA)** with Swift 6.0's 
 ### SQLite Data Persistence
 ```swift
 // Async database operations
-@Dependency(\.databaseService) var databaseService
+@Dependency(\.databaseClient) var databaseClient
 
-func saveMessage(_ message: Message) async throws {
-    try await databaseService.insert(message)
+func createSession(_ session: ChatSession) async throws {
+    try await databaseClient.createSession(session)
 }
 
-func loadConversation() async throws -> IdentifiedArrayOf<Message> {
-    try await databaseService.fetchMessages()
+func fetchAllSessions() async throws -> [ChatSession] {
+    try await databaseClient.fetchAllSessions()
 }
 ```
 
@@ -118,7 +118,9 @@ LocalMind/
 │           ├── AccentColor.colorset
 │           └── AppIcon.appiconset
 │
-├── Tests/                             # Unit and integration tests
+└── Tests/                             # Unit and integration tests
+     ├── LocalMindTests
+     └── LocalMindUITests 
 ```
 
 ### Directory Overview

@@ -7,8 +7,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-// MARK: - View
-
 /// `SettingsView` is a SwiftUI view that presents a settings interface for configuring generation and system instruction options.
 /// 
 /// - Parameters:

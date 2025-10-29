@@ -7,8 +7,6 @@
 import ComposableArchitecture
 import SwiftUI
 
-// MARK: - Feature
-
 /// A reducer responsible for managing the state and actions in the Settings screen.
 ///
 /// `SettingsReducer` uses the Composable Architecture to handle all side effects and

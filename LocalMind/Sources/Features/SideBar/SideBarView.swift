@@ -7,6 +7,33 @@
 import SwiftUI
 import ComposableArchitecture
 
+/// A SwiftUI view representing the application's sidebar.
+///
+/// `SideBarView` serves as the primary navigation or organizational panel, typically positioned
+/// on the side of the app's main window. It is commonly used to display lists of navigation options,
+/// content categories, or quick access items.
+///
+/// This view is designed to integrate seamlessly with macOS and other Apple platforms supporting sidebars.
+/// It can be customized to display various sections, icons, or hierarchical navigation based on app requirements.
+///
+/// - Important: Ensure that `SideBarView` is embedded within a suitable container such as `NavigationSplitView` or
+///   similar navigation scaffolding for best results.
+///
+/// ### Example Usage
+/// ```swift
+/// NavigationSplitView {
+///     SideBarView()
+///     // ...
+/// }
+/// ```
+///
+/// ### Platforms
+/// - macOS: Fully supported with rich sidebar behaviors.
+/// - iPadOS: Supported as a collapsible navigation panel.
+///
+/// - Author: [Your Name or Team]
+/// - Version: 1.0
+///
 @ViewAction(for: SideBarReducer.self)
 struct SideBarView: View {
     @Bindable var store: StoreOf<SideBarReducer>

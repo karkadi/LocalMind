@@ -7,7 +7,17 @@
 import OSLog
 import SQLiteData
 import Foundation
-
+/// Initializes and prepares the application's database for use.
+///
+/// This function is responsible for setting up all necessary database structures,
+/// performing any required migrations, and seeding initial data if needed.
+/// It should be called early in the application's lifecycle, typically during launch,
+/// to ensure the database is ready before any operations are performed.
+///
+/// - Throws: An error if database creation, migration, or seeding fails.
+/// - Important: This function may block while database operations are being performed.
+///   Consider calling it from a background queue if synchronous calls are undesirable.
+/// - SeeAlso: `migrateDatabase()`, `seedDatabaseIfNeeded()`
 extension DependencyValues {
     mutating func bootstrapDatabase() throws {
         @Dependency(\.context) var context

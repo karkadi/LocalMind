@@ -10,6 +10,29 @@ import ComposableArchitecture
 import Foundation
 import SQLiteData
 
+/// `SideBarReducer` is responsible for managing the state and actions related to the application's sidebar UI component.
+///
+/// Typical responsibilities of a sidebar reducer include:
+/// - Handling the selection and highlighting of sidebar items.
+/// - Managing the expansion or collapse of sidebar sections or groups.
+/// - Responding to user interactions, such as item selection or context menu actions.
+/// - Synchronizing sidebar state with underlying data models or navigation flows.
+///
+/// In a composable architecture context, `SideBarReducer` typically defines:
+/// - The state struct representing sidebar-specific data (selected item, expanded groups, etc.).
+/// - The actions enum representing all possible sidebar events (user and system-driven).
+/// - The reducer function that describes how actions transform state, possibly emitting effects (such as navigation).
+///
+/// `SideBarReducer` may also coordinate with child reducers or features for complex sidebar hierarchies.
+///
+/// Example use cases:
+/// - Navigating between sections of an app from the sidebar.
+/// - Displaying and updating badges or indicators on sidebar items.
+/// - Persisting sidebar state across app launches or user sessions.
+///
+/// Usage:
+/// Integrate `SideBarReducer` into your main app reducer, providing it with the necessary state and actions.
+/// Connect it to your sidebar SwiftUI views or AppKit components to drive the UI reactively.
 @Reducer
 struct SideBarReducer {
     @Dependency(\.databaseClient) private var databaseClient

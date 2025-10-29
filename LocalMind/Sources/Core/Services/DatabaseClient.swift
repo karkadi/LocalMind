@@ -8,7 +8,34 @@ import ComposableArchitecture
 import SQLiteData
 import Foundation
 
-// MARK: - Sendable Service
+/// `DatabaseClient` is a protocol or type that abstracts database interactions within the application.
+///
+/// This client provides a unified interface for performing CRUD (Create, Read, Update, Delete) operations,
+/// executing queries, and managing database connections, transactions, and migrations. Its implementation
+/// may encapsulate details such as connection pooling, error handling, and concurrency management,
+/// ensuring thread-safe and efficient access to the underlying database.
+///
+/// Typically, `DatabaseClient` is injected into services or view models, allowing for testability and
+/// decoupling from specific database technologies. Implementations can target various database engines,
+/// such as SQLite, Core Data, or even remote databases, depending on the needs of the application.
+///
+/// - Note: Methods and properties in `DatabaseClient` should be designed to leverage Swift’s concurrency
+///   features (e.g., async/await) to enable efficient and responsive data access.
+///
+/// Example responsibilities for `DatabaseClient` may include:
+/// - Executing SQL or query-builder statements.
+/// - Fetching, inserting, updating, or deleting records.
+/// - Managing database schema migrations.
+/// - Handling database errors and propagating meaningful error information.
+///
+/// Usage:
+/// ```swift
+/// let users = try await databaseClient.fetchUsers()
+/// try await databaseClient.insertUser(newUser)
+/// ```
+///
+/// By abstracting the database layer, `DatabaseClient` promotes code modularity, easier testing with
+/// mock databases, and flexibility to swap or upgrade data storage technologies.
 struct DatabaseClient: Sendable {
     var createSession: @Sendable (_ session: ChatSession) async throws -> Void
     var updateSession: @Sendable (_ session: ChatSession) async throws -> Void

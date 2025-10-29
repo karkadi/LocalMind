@@ -12,20 +12,92 @@
 		5B659C6D2EA57213007FFE93 /* LaTeXSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B659C6C2EA57213007FFE93 /* LaTeXSwiftUI */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5B2DED6E2EB20CE60052D1D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BB7693E2EA4F8EC00070D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BB769452EA4F8EC00070D06;
+			remoteInfo = LocalMind;
+		};
+		5B2DED7D2EB20D100052D1D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BB7693E2EA4F8EC00070D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BB769452EA4F8EC00070D06;
+			remoteInfo = LocalMind;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5B2DECF52EB135380052D1D3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5B2DED6A2EB20CE60052D1D3 /* LocalMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2DED772EB20D100052D1D3 /* LocalMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2DEE572EB243260052D1D3 /* LocalMind.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = LocalMind.xctestplan; sourceTree = "<group>"; };
 		5BB769462EA4F8EC00070D06 /* LocalMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5B2DED972EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMind" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sources/Tests/LocalMindTests/DatabaseClientTests.swift,
+				Sources/Tests/LocalMindTests/DeviceInfoClientTests.swift,
+				Sources/Tests/LocalMindTests/RenameDialogReducerTests.swift,
+				Sources/Tests/LocalMindTests/SettingsReducerTests.swift,
+				Sources/Tests/LocalMindUITests/LocalMindUITests.swift,
+				Sources/Tests/LocalMindUITests/LocalMindUITestsLaunchTests.swift,
+			);
+			target = 5BB769452EA4F8EC00070D06 /* LocalMind */;
+		};
+		5B2DED982EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMindTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sources/Tests/LocalMindTests/DatabaseClientTests.swift,
+				Sources/Tests/LocalMindTests/DeviceInfoClientTests.swift,
+				Sources/Tests/LocalMindTests/RenameDialogReducerTests.swift,
+				Sources/Tests/LocalMindTests/SettingsReducerTests.swift,
+			);
+			target = 5B2DED692EB20CE60052D1D3 /* LocalMindTests */;
+		};
+		5B2DED992EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMindUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sources/Tests/LocalMindUITests/LocalMindUITests.swift,
+				Sources/Tests/LocalMindUITests/LocalMindUITestsLaunchTests.swift,
+			);
+			target = 5B2DED762EB20D100052D1D3 /* LocalMindUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5BB769482EA4F8EC00070D06 /* LocalMind */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5B2DED972EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMind" target */,
+				5B2DED982EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMindTests" target */,
+				5B2DED992EB20D230052D1D3 /* Exceptions for "LocalMind" folder in "LocalMindUITests" target */,
+			);
 			path = LocalMind;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B2DED672EB20CE60052D1D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2DED742EB20D100052D1D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BB769432EA4F8EC00070D06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,6 +114,7 @@
 		5BB7693D2EA4F8EC00070D06 = {
 			isa = PBXGroup;
 			children = (
+				5B2DEE572EB243260052D1D3 /* LocalMind.xctestplan */,
 				5BB769482EA4F8EC00070D06 /* LocalMind */,
 				5BB769472EA4F8EC00070D06 /* Products */,
 				5B2DECF52EB135380052D1D3 /* README.md */,
@@ -52,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				5BB769462EA4F8EC00070D06 /* LocalMind.app */,
+				5B2DED6A2EB20CE60052D1D3 /* LocalMindTests.xctest */,
+				5B2DED772EB20D100052D1D3 /* LocalMindUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,6 +134,46 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B2DED692EB20CE60052D1D3 /* LocalMindTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2DED702EB20CE60052D1D3 /* Build configuration list for PBXNativeTarget "LocalMindTests" */;
+			buildPhases = (
+				5B2DED662EB20CE60052D1D3 /* Sources */,
+				5B2DED672EB20CE60052D1D3 /* Frameworks */,
+				5B2DED682EB20CE60052D1D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B2DED6F2EB20CE60052D1D3 /* PBXTargetDependency */,
+			);
+			name = LocalMindTests;
+			packageProductDependencies = (
+			);
+			productName = LocalMindTests;
+			productReference = 5B2DED6A2EB20CE60052D1D3 /* LocalMindTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B2DED762EB20D100052D1D3 /* LocalMindUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2DED7F2EB20D100052D1D3 /* Build configuration list for PBXNativeTarget "LocalMindUITests" */;
+			buildPhases = (
+				5B2DED732EB20D100052D1D3 /* Sources */,
+				5B2DED742EB20D100052D1D3 /* Frameworks */,
+				5B2DED752EB20D100052D1D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B2DED7E2EB20D100052D1D3 /* PBXTargetDependency */,
+			);
+			name = LocalMindUITests;
+			packageProductDependencies = (
+			);
+			productName = LocalMindUITests;
+			productReference = 5B2DED772EB20D100052D1D3 /* LocalMindUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5BB769452EA4F8EC00070D06 /* LocalMind */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BB769512EA4F8EE00070D06 /* Build configuration list for PBXNativeTarget "LocalMind" */;
@@ -95,6 +210,14 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					5B2DED692EB20CE60052D1D3 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 5BB769452EA4F8EC00070D06;
+					};
+					5B2DED762EB20D100052D1D3 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 5BB769452EA4F8EC00070D06;
+					};
 					5BB769452EA4F8EC00070D06 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -120,11 +243,27 @@
 			projectRoot = "";
 			targets = (
 				5BB769452EA4F8EC00070D06 /* LocalMind */,
+				5B2DED692EB20CE60052D1D3 /* LocalMindTests */,
+				5B2DED762EB20D100052D1D3 /* LocalMindUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B2DED682EB20CE60052D1D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2DED752EB20D100052D1D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BB769442EA4F8EC00070D06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,6 +295,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B2DED662EB20CE60052D1D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2DED732EB20D100052D1D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BB769422EA4F8EC00070D06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,7 +318,126 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5B2DED6F2EB20CE60052D1D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				macos,
+			);
+			target = 5BB769452EA4F8EC00070D06 /* LocalMind */;
+			targetProxy = 5B2DED6E2EB20CE60052D1D3 /* PBXContainerItemProxy */;
+		};
+		5B2DED7E2EB20D100052D1D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				macos,
+			);
+			target = 5BB769452EA4F8EC00070D06 /* LocalMind */;
+			targetProxy = 5B2DED7D2EB20D100052D1D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5B2DED712EB20CE60052D1D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MBM8NLR735;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Home.org.LocalMindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalMind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LocalMind";
+			};
+			name = Debug;
+		};
+		5B2DED722EB20CE60052D1D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MBM8NLR735;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Home.org.LocalMindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocalMind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LocalMind";
+			};
+			name = Release;
+		};
+		5B2DED802EB20D100052D1D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MBM8NLR735;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Home.org.LocalMindUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocalMind;
+			};
+			name = Debug;
+		};
+		5B2DED812EB20D100052D1D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MBM8NLR735;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Home.org.LocalMindUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocalMind;
+			};
+			name = Release;
+		};
 		5BB7694F2EA4F8EE00070D06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -230,7 +502,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
@@ -294,7 +566,7 @@
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				VALIDATE_PRODUCT = YES;
@@ -341,7 +613,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -385,7 +657,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -394,6 +666,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B2DED702EB20CE60052D1D3 /* Build configuration list for PBXNativeTarget "LocalMindTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2DED712EB20CE60052D1D3 /* Debug */,
+				5B2DED722EB20CE60052D1D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B2DED7F2EB20D100052D1D3 /* Build configuration list for PBXNativeTarget "LocalMindUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2DED802EB20D100052D1D3 /* Debug */,
+				5B2DED812EB20D100052D1D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BB769412EA4F8EC00070D06 /* Build configuration list for PBXProject "LocalMind" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

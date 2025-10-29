@@ -9,8 +9,6 @@ import Foundation
 import ComposableArchitecture
 import FoundationModels
 
-// MARK: - Feature
-
 /// `ChatReducer` is a reducer that manages the state and actions for a chat interface using a language model.
 ///
 /// This feature manages the full chat experience, including sending and receiving messages, interacting with a language model session,
