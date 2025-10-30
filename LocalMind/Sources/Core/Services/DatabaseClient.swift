@@ -44,6 +44,7 @@ struct DatabaseClient: Sendable {
     var deleteSession: @Sendable (_ sessionId: UUID) async throws -> Void
     var fetchAllMessages: @Sendable (_ sessionId: UUID) async throws -> [ChatMessage]
     var fetchAllSessions: @Sendable () async throws -> [ChatSession]
+    var searchMessages: @Sendable (_ query: String) async throws -> [UUID]
 }
 
 // MARK: - Live Implementation
@@ -104,6 +105,15 @@ extension DatabaseClient: DependencyKey {
                         .fetchAll(sqlDb)
                 }
                 return sessions
+            },
+            searchMessages: { query in
+                let messages: [ChatMessage] = try await database.read { sqlDb in
+                    try ChatMessage
+                        .where { $0.text.contains(query) }
+                        .order(by: \.timestamp)
+                        .fetchAll(sqlDb)
+                }
+                return messages.map { $0.chatSessionID }
             }
         )
     }()

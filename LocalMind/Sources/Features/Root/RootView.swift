@@ -61,7 +61,7 @@ struct RootView: View {
             ZStack(alignment: .leading) {
                 SideBarView(store: store.scope(state: \.sidebar, action: \.sidebar))
                     .frame(width: sidebarWidth)
-                    .offset(x: -sidebarWidth + contentOffset)
+                    .offset(x: contentOffset - sidebarWidth)
                 
                 ChatView(store: store.scope(state: \.chat, action: \.chat))
                     .compositingGroup()
@@ -91,6 +91,7 @@ struct RootView: View {
                         .offset(x: contentOffset)
                 }
             }
+            .ignoresSafeArea(edges: .horizontal)
         }
     }
 }

@@ -39,40 +39,65 @@ struct SideBarView: View {
     @Bindable var store: StoreOf<SideBarReducer>
     
     var body: some View {
-        List(selection: $store.selectedSessionID ) {
-            ForEach(store.sessions) { session in
-                HStack {
-                    Text(session.title)
-                        .font(.headline)
-                        .lineLimit(1)
-                    Spacer()
-                    Text(session.timestamp, style: .time)
-                        .foregroundColor(.secondary)
-                        .font(.caption)
-                }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    send(.selectSession(session.id))
-                }
-                .contextMenu {
-                    Button("Rename") {
-                        send(.renameButtonTapped(session))
-                    }
-                    Button("Delete", role: .destructive) {
-                        if let index = store.sessions.firstIndex(where: { $0.id == session.id }) {
-                            send(.deleteSession(IndexSet(integer: index)))
-                        }
-                    }
-                }
+        VStack(spacing: 0) {
+            // Search Bar
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
                 
+                TextField("Search in messages...", text: $store.searchText)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .onChange(of: store.searchText) { _, newValue in
+                        send(.searchTextChanged(newValue))
+                    }
+                
+                if store.isSearching {
+                    ProgressView()
+                        .scaleEffect(0.8)
+                        .padding(.trailing, 4)
+                } else if !store.searchText.isEmpty {
+                    Button(action: {
+                        send(.searchTextChanged(""))
+                    }, label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.secondary)
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                }
             }
-            .onDelete { indexSet in
-                send(.deleteSession(indexSet))
+            .padding(8)
+            // .background(Color(.controlBackgroundColor))
+            .cornerRadius(8)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            
+            // Sessions List
+            List(selection: $store.selectedSessionID) {
+                ForEach(store.searchText.isEmpty ? store.sessions : store.filteredSessions) { session in
+                    SessionRowView(
+                        session: session,
+                        isSearchResult: !store.searchText.isEmpty && store.filteredSessions.contains(where: { $0.id == session.id }),
+                        searchText: store.searchText,
+                        onSelect: { send(.selectSession(session.id)) },
+                        onRename: { send(.renameButtonTapped(session)) },
+                        onDelete: {
+                            let sessions = store.searchText.isEmpty ? store.sessions : store.filteredSessions
+                            if let index = sessions.firstIndex(where: { $0.id == session.id }) {
+                                send(.deleteSession(IndexSet(integer: index)))
+                            }
+                        }
+                    )
+                }
+                .onDelete { indexSet in
+                    send(.deleteSession(indexSet))
+                }
             }
         }
         .overlay {
             if store.isLoading {
                 ProgressView("Loading sessions…")
+            } else if !store.searchText.isEmpty && store.filteredSessions.isEmpty && !store.isSearching {
+                ContentUnavailableView.search(text: store.searchText)
             }
         }
         .onAppear {
@@ -83,8 +108,7 @@ struct SideBarView: View {
                onDismiss: { send(.dismissRenameDialog) },
                content: { renameStore in
             RenameDialogView(store: renameStore)
-        }
-        )
+        })
     }
 }
 

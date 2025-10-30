@@ -33,7 +33,7 @@
 		5B2DECF52EB135380052D1D3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5B2DED6A2EB20CE60052D1D3 /* LocalMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2DED772EB20D100052D1D3 /* LocalMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B2DEE572EB243260052D1D3 /* LocalMind.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = LocalMind.xctestplan; sourceTree = "<group>"; };
+		5B2DEE572EB243260052D1D3 /* LocalMind.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalMind.xctestplan; sourceTree = "<group>"; };
 		5BB769462EA4F8EC00070D06 /* LocalMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 

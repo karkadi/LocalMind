@@ -36,7 +36,7 @@ extension DependencyValues {
         migrator.registerMigration("Create tables") { sqlDb in
             
             try #sql(
-        """
+           """
            CREATE TABLE "chatSessions" (
                "id" TEXT PRIMARY KEY NOT NULL ON CONFLICT REPLACE DEFAULT (uuid()),
                "timestamp" TEXT NOT NULL ON CONFLICT REPLACE,
@@ -47,7 +47,7 @@ extension DependencyValues {
             .execute(sqlDb)
             
             try #sql(
-        """
+          """
           CREATE TABLE "chatMessages" (
               "id" TEXT PRIMARY KEY NOT NULL ON CONFLICT REPLACE DEFAULT (uuid()),
               "timestamp" TEXT NOT NULL ON CONFLICT REPLACE,
@@ -62,6 +62,10 @@ extension DependencyValues {
         }
         try migrator.migrate(database)
         defaultDatabase = database
+        defaultSyncEngine = try SyncEngine(
+            for: database,
+            tables: ChatMessage.self,
+            ChatSession.self)
     }
 }
 

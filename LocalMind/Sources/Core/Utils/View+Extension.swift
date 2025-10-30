@@ -45,10 +45,6 @@ extension View {
 #endif
     }
     
-    var userRoleColor: Color {
-        Color("UserRoleColor")
-    }
-    
     // MARK: - Layout Helpers
     func isLandscape(horizontalSizeClass: UserInterfaceSizeClass?,
                      verticalSizeClass: UserInterfaceSizeClass?) -> Bool {
@@ -71,5 +67,9 @@ extension View {
 #else
         return screenWidth * 0.75
 #endif
+    }
+    
+    var userRoleColor: Color {
+        Color("UserRoleColor")
     }
 }

@@ -38,9 +38,17 @@ struct ChatView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     VStack {
-                        ForEach(store.messages) { message in
-                            MessageView(message: message, isResponding: store.isResponding)
-                                .id(message.id)
+                        if store.messages.isEmpty {
+                            Spacer()
+                                .frame(width: 130)
+                            Text("I'm Apple Intelligence.\n")
+                            Text("How can I help you?")
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            ForEach(store.messages) { message in
+                                MessageView(message: message, isResponding: store.isResponding)
+                                    .id(message.id)
+                            }
                         }
                     }
                     .padding()
@@ -54,9 +62,9 @@ struct ChatView: View {
                     }
                 }
                 .onTapGesture {
-                    #if os(iOS)
+#if os(iOS)
                     UIApplication.shared.endEditing()
-                    #endif
+#endif
                 }
             }
             
@@ -79,7 +87,7 @@ struct ChatView: View {
                 SettingsView(store: settingsStore)
             }
         )
-        .alert($store.scope(state: \.alert, action: \.alert))        
+        .alert($store.scope(state: \.alert, action: \.alert))
     }
     
     private var inputField: some View {

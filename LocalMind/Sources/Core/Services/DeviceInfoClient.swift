@@ -60,8 +60,10 @@ extension DeviceInfoClient: DependencyKey {
         },
         shouldUseSplitView: {
 #if os(iOS)
+            // Explicitly ensure that iPhones never use SplitView, even in landscape
             return MainActor.assumeIsolated {
-                UIDevice.current.userInterfaceIdiom == .pad
+                let idiom = UIDevice.current.userInterfaceIdiom
+                return idiom == .pad
             }
 #elseif os(macOS)
             return true

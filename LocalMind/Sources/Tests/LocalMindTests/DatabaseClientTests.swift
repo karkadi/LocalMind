@@ -425,9 +425,9 @@ struct DatabaseClientTests {
         )
         
         await withTaskGroup(of: Void.self) { group in
-            for i in 0..<7 {
+            for index in 0..<7 {
                 group.addTask {
-                    switch i {
+                    switch index {
                     case 0: try? await client.createSession(self.testSession)
                     case 1: try? await client.updateSession(self.testSession)
                     case 2: try? await client.createMessage(self.testMessage)
@@ -456,4 +456,3 @@ enum TestError: Error, Equatable {
     case databaseError
     case notImplemented
 }
-

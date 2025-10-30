@@ -33,6 +33,7 @@ import SQLiteData
 /// Usage:
 /// Integrate `SideBarReducer` into your main app reducer, providing it with the necessary state and actions.
 /// Connect it to your sidebar SwiftUI views or AppKit components to drive the UI reactively.
+///
 @Reducer
 struct SideBarReducer {
     @Dependency(\.databaseClient) private var databaseClient
@@ -40,8 +41,11 @@ struct SideBarReducer {
     @ObservableState
     struct State {
         var sessions: [ChatSession] = []
+        var filteredSessions: [ChatSession] = []
         var isLoading = false
+        var isSearching = false
         var selectedSessionID: UUID?
+        var searchText = ""
         @Presents var alert: AlertState<Action>?
         @Presents var renameDialog: RenameDialogReducer.State?
     }
@@ -57,10 +61,13 @@ struct SideBarReducer {
             case dismissRenameDialog
             case fetchAllSessions
             case renameButtonTapped(ChatSession)
+            case searchTextChanged(String)
+            case performSearch(String)
         }
         // swiftlint:enable nesting
         case selectSession(ChatSession)
         case sessionsResponse(Result<[ChatSession], Error>)
+        case searchResponse(Result<[ChatSession], Error>)
         case alert(PresentationAction<Action>)
         case renameDialog(PresentationAction<RenameDialogReducer.Action>)
     }
@@ -68,7 +75,6 @@ struct SideBarReducer {
     public var body: some Reducer<State, Action> {
         BindingReducer()
         Reduce(core)
-        // 🔤 Attach rename dialog reducer
             .ifLet(\.$renameDialog, action: \.renameDialog) {
                 RenameDialogReducer()
             }
@@ -90,6 +96,12 @@ struct SideBarReducer {
         case let .sessionsResponse(.success(sessions)):
             state.isLoading = false
             state.sessions = sessions.sorted(by: { $0.timestamp > $1.timestamp })
+            // Apply current search filter to the new sessions if searching
+            if !state.searchText.isEmpty {
+                return .send(.view(.performSearch(state.searchText)))
+            } else {
+                state.filteredSessions = state.sessions
+            }
             return .none
             
         case let .sessionsResponse(.failure(error)):
@@ -98,6 +110,16 @@ struct SideBarReducer {
             return .none
             
             // Alert actions
+        case let .searchResponse(.success(sessions)):
+            state.isSearching = false
+            state.filteredSessions = sessions.sorted(by: { $0.timestamp > $1.timestamp })
+            return .none
+            
+        case let .searchResponse(.failure(error)):
+            state.isSearching = false
+            state.alert = AlertState(title: { TextState("Search failed: \(error.localizedDescription)") })
+            return .none
+            
         case .alert(.presented(let action)):
             return .send(action)
             
@@ -154,7 +176,9 @@ struct SideBarReducer {
             
             // Delete session
         case let .deleteSession(indexSet):
-            let idsToDelete = indexSet.map { state.sessions[$0].id }
+            // Use filtered sessions for deletion when searching
+            let sessionsToUse = state.searchText.isEmpty ? state.sessions : state.filteredSessions
+            let idsToDelete = indexSet.map { sessionsToUse[$0].id }
             return .run { send in
                 for id in idsToDelete {
                     try await databaseClient.deleteSession(id)
@@ -178,6 +202,37 @@ struct SideBarReducer {
         case .dismissRenameDialog:
             state.renameDialog = nil
             return .none
+            
+        case let .searchTextChanged(text):
+            state.searchText = text
+            if text.isEmpty {
+                state.isSearching = false
+                state.filteredSessions = state.sessions
+                return .none
+            }
+            // Debounce search - wait a bit before performing actual search
+            return .run { send in
+                try await Task.sleep(nanoseconds: 300_000_000) // 300ms debounce
+                await send(.view(.performSearch(text)))
+            }
+            
+        case let .performSearch(searchText):
+            guard !searchText.isEmpty else {
+                state.filteredSessions = state.sessions
+                return .none
+            }
+            
+            state.isSearching = true
+            return .run { [sessions = state.sessions] send in
+                do {
+                    // Search through all messages and get their sessions
+                    let matchingSessionsIds = try await databaseClient.searchMessages(searchText)
+                    let matchingSessions = sessions.filter { matchingSessionsIds.contains($0.id ) }
+                    await send(.searchResponse(.success(matchingSessions)))
+                } catch {
+                    await send(.searchResponse(.failure(error)))
+                }
+            }
         }
     }
 }
